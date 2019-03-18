@@ -1,0 +1,85 @@
+server:
+  port: 8010
+spring:
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    time-zone: "GMT+8"
+  thymeleaf:
+    prefix: classpath:/web/view/
+  mvc:
+    static-path-pattern: /resources/web/static/**
+    throw-exception-if-no-handler-found: true
+    dispatch-options-request: true
+  profiles:
+    active: pro
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 500MB
+      max-request-size: 700MB
+logging:
+  file: rpLog/rpApp.log
+  level:
+    root: info
+    org.springframework.web: info
+    org.hibernate: info
+    com.rongpingkeji.data.mybatisMapper: debug
+
+application:
+  name: rpApp
+  pay:
+    wechat:
+      def:
+         appId: wxf940e3e027824d71
+         key: d95e1d5a5fdf2957fce87bf8735c6061
+         mchId: 1518415261
+         apiKey: U00kUgkwUdu1nGwd031guwv150n00K88
+         notifyUrl: https://project.rongpingkeji.com/yiziC/notify/wechatPay
+         refundNotifyUrl: https://project.rongpingkeji.com/yiziC/notify/wechatRefund
+    ali:
+      def:
+        appId:
+        partner:
+        rsaPrivate:
+  service:
+    oss:
+        endpoint: http://oss-cn-shanghai.aliyuncs.com/
+        accessKeyId: LTAIWwFBSPi9Jxjn
+        accessKeySecret: uf4AQjsEaW9XxTjHloHxxswN3Cdf79
+        bucketName: rpkj-opencv
+        filePath: opencv/
+        cdnDomain: http://rpkj-opencv.oss-cn-shanghai.aliyuncs.com/
+  file:
+    upload:
+      path: D:/JAVAWEB/
+      prefix: http://118.31.10.184
+      maxSize: 50
+      displayPath: Yizi
+      adminDir: YiziAdmin
+      temp: /RpData/tmp/
+
+ ###邮箱配置###
+mail:
+  protocol: smtp
+  host: smtp.exmail.qq.com
+  port: 465
+  smtp:
+    socketFactory.port: 465
+    auth: true
+    starttls.enable: true
+    debug: true
+    starttls.required: true
+    socketFactory.fallback: false
+  from:
+    mail: shaozhen@pingxinghulian.com
+    name: 戎平科技
+  username: shaozhen@pingxinghulian.com
+  password: Xm123654789
+  config:
+    emailcode: BSB邮箱绑定验证
+    emailcodeContent: 您好，您的验证码是%s
+
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations:  classpath:mybatis/sql/*.xml
+  type-aliases-package: com.rongpingkeji.data.dto
